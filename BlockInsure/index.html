@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>保鏈安全</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> 
+    </head>
+  <body>
+    <div class="container text-center py-5">
+        <h1 class="mt-5">保鏈安全 - BlockInsure</h1>
+        <p>線上保單系統，使用者可以進行保單投保以及內容確認</p>
+        <p>!!此系統為建置在區塊鏈上!!</p>
+        <div class="row mt-5">
+            <div class="col-md-8">
+                <h2>投保內容查詢</h2>
+                <div class="form-floating">
+                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                      <option selected>點擊我打開</option>
+                    </select>
+                    <label for="floatingSelect">選擇想看的保單ID</label>
+                  </div>
+                <table class="table table-light table-striped text-start">
+                    <tbody>
+                      <tr>
+                        <th scope="row">保險受益人</th>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th>保險費</th>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th>保險金額</th>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th>投保時間</th>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th>過期時間</th>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th>出險情況</th>
+                        <td></td>
+                      </tr>
+                      <tr>
+                        <th>保險費付款情形</th>
+                        <td></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h2>自動投保</h2>
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">保險費</span>
+                    <input type="text" id="premiumAmount" class="form-control" placeholder="保險費" aria-label="Username" aria-describedby="basic-addon1">
+                    <span class="input-group-text" id="basic-addon1">保險金額</span>
+                    <input type="text" id="coverageAmount" class="form-control" placeholder="保險金額" aria-label="Username" aria-describedby="basic-addon1">
+                    <span class="input-group-text" id="basic-addon1">保險時間</span>
+                    <input type="text" id="durationInMonths" class="form-control" placeholder="保險時間(月)" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+                  <button class="btn btn-primary w-100" id="purchaseInsurance">投保</button>
+                  <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text" id="basic-addon1">保險單(ID)</span>
+                    <!-- <input type="text" id="policyid" class="form-control" placeholder="保險單(ID)" aria-label="Username" aria-describedby="basic-addon1"> -->
+                    <select id="processSelect" class="form-select" aria-label="Default select example">
+                        <option selected>選擇保險單</option>
+                    </select>
+                    <span class="input-group-text" id="basic-addon1">保險費</span>
+                    <input type="text" id="insurancePay" class="form-control" placeholder="保險費" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+                  <button class="btn btn-primary w-100" id="processPremiumPayment">保險費付款</button>
+                  <h2 class="mt-4">出事了?(出險)</h2>
+                  <div class="input-group mb-3 mt-3">
+                    <span class="input-group-text" id="basic-addon1">保險單(ID)</span>
+                    <!-- <input type="text" id="policyI" class="form-control" placeholder="保險單(ID)" aria-label="Username" aria-describedby="basic-addon1"> -->
+                    <select id="fileClaimSelect" class="form-select" aria-label="Default select example">
+                        <option selected>選擇保險單</option>
+                    </select>
+                    <span class="input-group-text" id="basic-addon1">出險金額</span>
+                    <input type="text" id="claimAmount" class="form-control" placeholder="出險金額" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+                  <button class="btn btn-danger w-100" id="fileClaim">出險</button>
+            </div>
+            <div class="col-md-4">
+                <h4 class="text-muted">合約與使用者資訊</h4>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">錢包帳號</h5>
+                      </div>
+                      <p class="mb-1 user-info"></p>
+                    </li>
+                    <li class="list-group-item">
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">錢包剩餘金額</h5>
+                      </div>
+                      <p class="mb-1 user-info"></p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">合約位址</h5>
+                        </div>
+                        <p class="mb-1 user-info"></p>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">合約中的金錢</h5>
+                        </div>
+                        <p class="mb-1 user-info"></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+<button id="alertBtn" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" hidden>
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger">
+        <h5 class="modal-title" id="exampleModalLabel">注意</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.36/dist/web3.min.js" integrity="sha256-nWBTbvxhJgjslRyuAKJHK+XcZPlCnmIAAMixz6EefVk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js"></script>
+    <script type="text/javascript" src="./script.js" defer></script>
+</body>
+</html>
